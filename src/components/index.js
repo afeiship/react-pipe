@@ -5,33 +5,29 @@ import classNames from 'classnames';
 import noop from 'noop';
 import objectAssign from 'object-assign';
 
-const CLASS_NAME = 'react-pipe';
+const CLASS_NAME = 'react-filter';
 const RETURN_VALUE = (inValue) => inValue;
+const DEFAULT_FILTER = { fn: RETURN_VALUE, args: [] };
 
 export default class extends Component {
   static displayName = CLASS_NAME;
 
   /*===properties start===*/
   static propTypes = {
+    className: PropTypes.string,
     items: PropTypes.array
   };
 
   static defaultProps = {
-    items: []
+    items: [DEFAULT_FILTER]
   };
   /*===properties end===*/
 
   compose() {
-    // const { children, items } = this.props;
-    // return items.reduce((item1, item2) => {
-    //   return item2(item1, item2.args);
-    // }, children);
-
     const { children, items } = this.props;
-    if (items.length === 0) {
-      return children;
-    }
-    return RETURN_VALUE(children);
+    return items.reduce((item1, item2) => {
+      return item2.fn(item1, item2.args);
+    }, children);
   }
 
   render() {

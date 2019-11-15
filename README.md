@@ -16,21 +16,33 @@ npm install -S afeiship/react-pipe
   ```
 2. import js
   ```js
-  import React from 'react';
+  import ReactFilter from '../src/main';
   import ReactDOM from 'react-dom';
-  import ReactPipe from 'react-pipe';
-  
-  // your app:
-  class App extends React.Component{
-    render(){
+  import React from 'react';
+  import './assets/style.scss';
+
+  import addZero from './pipes/add-zero';
+  import toString from './pipes/to-string';
+  import addMore from './pipes/add-more';
+
+  class App extends React.Component {
+    render() {
       return (
-        <ReactPipe />
-      )
+        <div className="app-container">
+          <ReactFilter
+            items={[
+              { fn: addZero },
+              { fn: toString },
+              { fn: addMore, args: ['hele', 'haha'] }
+            ]}>
+            HELLO
+          </ReactFilter>
+        </div>
+      );
     }
   }
 
-  // render to dom:
-  ReactDOM.render(<App/>, document.getElementById('app'));
+  ReactDOM.render(<App />, document.getElementById('app'));
   ```
 
 ## documentation
