@@ -7,7 +7,7 @@ import objectAssign from 'object-assign';
 
 const CLASS_NAME = 'react-filter';
 const RETURN_VALUE = (inValue) => inValue;
-const DEFAULT_FILTER = { fn: RETURN_VALUE, args: [] };
+const DEFAULT_PIPE = { fn: RETURN_VALUE, args: [] };
 
 export default class extends Component {
   static displayName = CLASS_NAME;
@@ -19,7 +19,7 @@ export default class extends Component {
   };
 
   static defaultProps = {
-    items: [DEFAULT_FILTER]
+    items: [DEFAULT_PIPE]
   };
   /*===properties end===*/
 
