@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import noop from 'noop';
+import noop from '@feizheng/noop';
 import objectAssign from 'object-assign';
+import nxPipe from '@feizheng/next-pipe';
 
 const CLASS_NAME = 'react-filter';
-const RETURN_VALUE = (inValue) => inValue;
-const DEFAULT_PIPE = { fn: RETURN_VALUE, args: [] };
 
 export default class extends Component {
   static displayName = CLASS_NAME;
@@ -19,18 +18,12 @@ export default class extends Component {
   };
 
   static defaultProps = {
-    items: [DEFAULT_PIPE]
+    items: []
   };
   /*===properties end===*/
 
-  compose() {
-    const { children, items } = this.props;
-    return items.reduce((item1, item2) => {
-      return item2.fn(item1, item2.args);
-    }, children);
-  }
-
   render() {
-    return this.compose();
+    const { children, items } = this.props;
+    return nxPipe(children, items);
   }
 }

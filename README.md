@@ -1,15 +1,21 @@
 # react-pipe
 > Pipe for react.
 
-## install
+## installation
 ```shell
-npm install -S afeiship/react-pipe
+npm install -S @feizheng/react-pipe
 ```
+## properties
+| property        | type | description |
+| --------------- | ---- | ----------- |
+| className       | -    | -           |
+| value           | -    | -           |
+| onChange        | -    | -           |
 
 ## usage
 1. import css
   ```scss
-  @import "~react-pipe/style.scss";
+  @import "~@feizheng/react-pipe/dist/style.scss";
 
   // customize your styles:
   $react-pipe-options: ()
@@ -43,6 +49,7 @@ npm install -S afeiship/react-pipe
   }
 
   ReactDOM.render(<App />, document.getElementById('app'));
+
   ```
 
 ## documentation
