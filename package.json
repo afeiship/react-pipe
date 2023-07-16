@@ -11,6 +11,8 @@
   },
   "scripts": {
     "start": "yarn --cwd packages/websites start",
+    "start:cra": "yarn --cwd packages/cra start",
+    "start:vite": "yarn --cwd packages/vite dev",
     "lerna:clean": "lerna clean",
     "lerna:list": "lerna list",
     "lerna:bootstrap": "lerna bootstrap",
