@@ -1,74 +1,26 @@
 {
-  "name": "@feizheng/react-pipe",
-  "version": "1.0.1",
-  "description": "Pipe for react.",
-  "main": "dist/index.js",
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --env.type=dev",
-    "build": "cross-env NODE_ENV=production webpack -p --env.type=build",
-    "release": "cross-env NODE_ENV=production webpack -p --env.type=release",
-    "docs": "cross-env NODE_ENV=production webpack -p --env.type=docs",
-    "start": "node build/server.js",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/afeiship/react-pipe.git"
-  },
-  "keywords": [
-    "react",
-    "component"
-  ],
-  "author": "afei",
-  "license": "MIT",
-  "browserslist": {
-    "production": [
-      "last 2 version",
-      "Explorer >= 10",
-      "Android >= 4"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+  "name": "vite-cra",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
     ]
   },
-  "bugs": {
-    "url": "https://github.com/afeiship/react-pipe/issues"
-  },
-  "homepage": "https://github.com/afeiship/react-pipe#readme",
   "devDependencies": {
-    "@babel/core": "^7.4.0",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/plugin-proposal-decorators": "^7.4.0",
-    "@babel/preset-env": "^7.4.2",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.4.0",
-    "@feizheng/rake-git": "^1.2.0",
-    "@feizheng/webpack-lib-kits": "^1.1.0",
-    "babel-loader": "^8.0.5",
-    "cross-env": "^5.2.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "express": "^4.16.4",
-    "jest": "^24.5.0",
-    "node-sass": "^4.12.0",
-    "prettier": "^1.16.4",
-    "react-testing-library": "^6.0.2",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1",
-    "webpack-merge": "^4.2.1"
+    "lerna": "^3.22.1"
   },
-  "dependencies": {
-    "@feizheng/next-pipe": "^1.0.0",
-    "@feizheng/noop": "^1.0.0",
-    "classnames": "^2.2.6",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+  "scripts": {
+    "start": "yarn --cwd packages/websites start",
+    "lerna:clean": "lerna clean",
+    "lerna:list": "lerna list",
+    "lerna:bootstrap": "lerna bootstrap",
+    "build": "lerna run build --since master --no-private",
+    "build:all": "lerna run build",
+    "publish": "npm run build && lerna publish --no-private"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+  "homepage": "https://js.work",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afeiship/vite-cra.git"
   }
 }
