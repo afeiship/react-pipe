@@ -1,9 +1,33 @@
-import React from "react";
 import camelcase from "camelcase";
 
 const FILENAME_RE = /[._/-]/;
 
 const context = require.context("./modules", true, /\.ts$/);
+const keys = context.keys();
+
+console.log("detect vite or webpack: ", typeof process);
+
+function getModuleFiles(inCtx: any) {
+  return inCtx.keys().reduce((acc: any, key: string) => {
+    const store = inCtx(key);
+    acc[key] = store;
+    return acc;
+  }, {});
+}
+
+// console.log("moduleFiles: ", getModuleFiles(context));
+
+function getFiles() {
+  const context = require.context("./modules", true, /\.ts$/);
+  return context.keys().reduce((acc: any, key: string) => {
+    const store = context(key);
+    acc[key] = store;
+    return acc;
+  }, {});
+}
+
+console.log("files: ", getFiles());
+
 function getFilename(inKey: string) {
   const paths = inKey.split(FILENAME_RE);
   const valid = paths.filter(Boolean);
